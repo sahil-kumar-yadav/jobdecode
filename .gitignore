@@ -1,0 +1,68 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# =========================
+# FastAPI / Uvicorn
+# =========================
+*.log
+
+# =========================
+# SQLite Database
+# =========================
+*.db
+*.sqlite
+*.sqlite3
+
+# =========================
+# Pandas / Data files (optional)
+# =========================
+*.csv
+*.parquet
+*.json
+
+# Keep sample data if needed:
+!sample_data/*.csv
+!sample_data/*.json
+
+# =========================
+# Jupyter Notebook (if used)
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# IDEs / Editors
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Codespaces / Dev Containers
+# =========================
+.devcontainer/
