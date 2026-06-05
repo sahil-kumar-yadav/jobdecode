@@ -1,10 +1,23 @@
 import logging
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.etl import run_etl_and_load
 
+
 app = FastAPI(title="Job Market Analytics ETL", version="0.1.0")
+
+# Allow browser-based UIs (Next.js) to call this API during development.
+# Keep permissive for local usage; tighten in production.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 logger = logging.getLogger("jobdecode")
 

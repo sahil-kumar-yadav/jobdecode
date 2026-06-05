@@ -11,7 +11,7 @@ type StatsResponse = {
   count: number;
 };
 
-const API_BASE: string = process.env.NEXT_PUBLIC_API_BASE ?? 'http://localhost:8000';
+const API_BASE: string = process.env.NEXT_PUBLIC_API_BASE ?? 'https://cautious-space-chainsaw-g9r76wxgx54fp7gv-8000.app.github.dev';
 
 export default function StatsPage() {
   const [stats, setStats] = useState<StatsResponse | null>(null);
