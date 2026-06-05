@@ -16,6 +16,7 @@ data/*.json
 *./jobdecode/web/node_modules
 *./web/node_modules
 **/node_modules/
+**/.next
 
 
 # Next.js
