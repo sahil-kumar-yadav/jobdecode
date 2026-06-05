@@ -25,17 +25,43 @@ def run_etl():
 
 
 @app.get("/jobs")
-def get_jobs(location: str | None = None, skill: str | None = None, page: int = 1, page_size: int = 50):
+def get_jobs(
+    location: str | None = None,
+    skill: str | None = None,
+    page: int = 1,
+    page_size: int = 50,
+    sort: str = "posted_date",
+    order: str = "desc",
+):
     # Deferred import so app start is quick.
     from app.db import list_jobs
 
-    return list_jobs(location=location, skill=skill, page=page, page_size=page_size)
+    return list_jobs(
+        location=location,
+        skill=skill,
+        page=page,
+        page_size=page_size,
+        sort=sort,
+        order=order,
+    )
 
 
 @app.get("/stats")
 def stats():
+    # Fast path: serve cached stats computed during the last /run-etl
+    from app.app_state import cache, lock
+
+    with lock:
+        if cache.payload is not None:
+            return cache.payload
+
     from app.analytics import compute_stats
 
-    return compute_stats()
+    payload = compute_stats()
+    with lock:
+        cache.payload = payload
+        cache.version += 1
+    return payload
+
 
 
