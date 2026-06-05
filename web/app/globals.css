@@ -1,0 +1,4 @@
+html, body { margin: 0; padding: 0; background: #f7f7f7; color: #111; }
+button { cursor: pointer; }
+input, select { padding: 8px 10px; border: 1px solid #ddd; border-radius: 10px; background: #fff; }
+
